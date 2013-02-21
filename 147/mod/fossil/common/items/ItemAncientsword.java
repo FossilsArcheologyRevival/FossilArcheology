@@ -48,9 +48,8 @@ public class ItemAncientsword extends ItemSword
                 var1.worldObj.spawnEntityInWorld(var3);
                 var3.Mouth.SendSpeech(EnumPigmenSpeaks.LifeFor, var3.LeaderName);
             }
+            var1.worldObj.addWeatherEffect(new EntityMLighting(var1.worldObj, var1.posX, var1.posY, var1.posZ));
         }
-
-        var1.worldObj.addWeatherEffect(new EntityMLighting(var1.worldObj, var1.posX, var1.posY, var1.posZ));
         return 4 + EnumToolMaterial.IRON.getDamageVsEntity() * 2;
     }
 
