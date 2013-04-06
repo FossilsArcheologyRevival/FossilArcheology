@@ -1,4 +1,4 @@
-<project name="FossilArcheology" basedir="../" default="main">
+<project name="FossilArcheology" basedir="." default="main">
   <property environment="env"/>
 
 	<!-- Properties -->
