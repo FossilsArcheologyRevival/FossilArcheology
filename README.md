@@ -1,4 +1,4 @@
-FossilArcheology
+FossilArcheology  [![Build Status](https://travis-ci.org/k2b6s9j/FossilArcheology.png?branch=TravisCI)](https://travis-ci.org/k2b6s9j/FossilArcheology)
 ================
 
 IN the Fossil.java:
