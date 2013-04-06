@@ -5,6 +5,4 @@ jdk:
   - openjdk6
 before_script:
   - sudo apt-get install astyle
-  - ls
-  - ls fossil
 script: ant test
