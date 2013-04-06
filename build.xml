@@ -1,4 +1,4 @@
-<project name="LogisticsPipes" basedir="../" default="main">
+<project name="FossilArcheology" basedir="../" default="main">
   <property environment="env"/>
 
 	<!-- Properties -->
@@ -16,11 +16,7 @@
 
 	<property name="mcp.dir"              value="${build.dir}/mcp"/>
 	<property name="forge.dir"            value="${mcp.dir}/forge"/>
-	<property name="buildcraft.dir"       value="${mcp.dir}/buildcraft"/>
-	<property name="forestry.dir"         value="${mcp.dir}/forestry"/>
-	<property name="ic2.dir"              value="${mcp.dir}/ic2"/>
-	<property name="cc.dir"               value="${mcp.dir}/cc"/>
-
+	
 	<property name="clientsrc.dir"        value="${mcp.dir}/src/minecraft"/>
 	<property name="commonsrc.dir"        value="${clientsrc.dir}"/>
 
@@ -32,11 +28,6 @@
 	<property name="mcp.version"          value="726"/>
 	<property name="mc.version"           value="1.4.7"/>
 	<property name="forge.version"        value="6.6.0.497"/>
-	<property name="bc.version"           value="3.4.1"/>
-	<property name="forestry.version"     value="1.7.0.0"/>
-	<property name="ic2.version"          value="1.112.189-lf"/>
-	<property name="cc.version"           value="1.48pr2"/>
-	<property name="lp.version"           value="0.7.0"/>
 
 	<!-- Targets -->
 	<target name="init-msg">
@@ -52,10 +43,6 @@
 
 		<get src="${downloadserver.full}mcp${mcp.version}.zip" dest="${download.dir}" usetimestamp="True"/>
 		<get src="${downloadserver.full}minecraftforge-src-${mc.version}-${forge.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}buildcraft-src-${bc.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}forestry-api-${forestry.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}industrialcraft-2-api_${ic2.version}.zip" dest="${download.dir}" usetimestamp="True"/>
-		<get src="${downloadserver.full}ComputerCraftAPI${cc.version}.zip" dest="${download.dir}" usetimestamp="True"/>
 		<get src="${downloadserver.full}ant-contrib-${antcont.version}-bin.zip" dest="${download.dir}" usetimestamp="True"/>
 
 		<echo message="Download finished"/>
@@ -76,30 +63,6 @@
 		<unzip dest="${mcp.dir}" failOnEmptyArchive="true">
 			<fileset dir="${download.dir}">
 				<include name="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${buildcraft.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="buildcraft-src-${bc.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${forestry.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="forestry-api-${forestry.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${ic2.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="industrialcraft-2-api_${ic2.version}.zip"/>
-			</fileset>
-		</unzip>
-
-		<unzip dest="${cc.dir}" failOnEmptyArchive="true">
-			<fileset dir="${download.dir}">
-				<include name="ComputerCraftAPI${cc.version}.zip"/>
 			</fileset>
 		</unzip>
 
@@ -125,47 +88,6 @@
 		</exec>
 
 		<echo message="Decompile finished"/>
-
-		<!-- Copy BC source -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${buildcraft.dir}/common">
-				<exclude name="**/buildcraft/devel"/>
-			</fileset>
-		</copy>
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${buildcraft.dir}/buildcraft_resources">
-			</fileset>
-		</copy>
-
-		<echo message="Copied BC files"/>
-
-		<!-- Copy Forestry API source -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${forestry.dir}"/>
-		</copy>
-
-		<echo message="Copied Forestry API"/>
-
-		<!-- Copy IC2 API source -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${ic2.dir}"/>
-		</copy>
-
-		<echo message="Copied IC2 API"/>
-
-		<!-- Copy CC API source -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${cc.dir}/src"/>
-		</copy>
-
-		<echo message="Copied CC API"/>
-
-		<!-- Copy Dummy classes source -->
-		<copy todir="${commonsrc.dir}">
-			<fileset dir="${src.dir}/dummy"/>
-		</copy>
-
-		<echo message="Copied dummy files"/>
 
 		<!-- Refresh MD5 -->
 		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
