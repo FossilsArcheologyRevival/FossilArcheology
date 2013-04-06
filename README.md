@@ -1,3 +1,6 @@
+FossilArcheology
+================
+
 IN the Fossil.java:
 At the very beginning is a boolean DebugMode.
 Set to true for work in eclipse, false for compiles.
