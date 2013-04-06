@@ -2,7 +2,9 @@
   <property environment="env"/>
 
 	<!-- Properties -->
-
+	
+	<property name="project.name"         value="FossilArcheology"/>
+	
 	<property name="build.dir"            value="build"/>
 	<property name="src.dir"              value="src"/>
 	<property name="sign.dir"             value="/home/jenkins/.sign"/>
@@ -28,10 +30,12 @@
 	<property name="mcp.version"          value="726"/>
 	<property name="mc.version"           value="1.4.7"/>
 	<property name="forge.version"        value="6.6.0.497"/>
+	<property name="fossil.version"	      value="0004"/>
+	<property name="fossil.version.full"  value="$(project.name) version $(fossil.version)"/>
 
 	<!-- Targets -->
 	<target name="init-msg">
-		<echo message="Starting build for ${lp.version.full} for MC ${mc.version} for BC ${bc.version}"/>
+		<echo message="Starting build for ${fossil.version.full} for Minecraft version ${mc.version}"/>
 	</target>
 
 	<target name="clean">
@@ -40,7 +44,7 @@
 
 	<target name="setup">
 		<mkdir dir="${download.dir}"/>
-
+ ver
 		<get src="${downloadserver.full}mcp${mcp.version}.zip" dest="${download.dir}" usetimestamp="True"/>
 		<get src="${downloadserver.full}minecraftforge-src-${mc.version}-${forge.version}.zip" dest="${download.dir}" usetimestamp="True"/>
 		<get src="${downloadserver.full}ant-contrib-${antcont.version}-bin.zip" dest="${download.dir}" usetimestamp="True"/>
