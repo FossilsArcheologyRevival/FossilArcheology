@@ -121,23 +121,7 @@
 
 		<!-- Copy LP source -->
 		<copy todir="${commonsrc.dir}">
-			<fileset dir="${src.dir}/WorldTypeFossil.java"/>
-			<fileset dir="${src.dir}/RenderHUD.java"/>
-			<fileset dir="${src.dir}/RelicHoleList.java"/>
-			<fileset dir="${src.dir}/RelicHole.java"/>
-			<fileset dir="${src.dir}/Fossil.java"/>
-			<fileset dir="${src.dir}/CommonProxy.java"/>
-			<fileset dir="${src.dir}/tags"/>
-			<fileset dir="${src.dir}/tabs"/>
-			<fileset dir="${src.dir}/items"/>
-			<fileset dir="${src.dir}/guiBlocks"/>
-			<fileset dir="${src.dir}/gens"/>
-			<fileset dir="${src.dir}/fossilIntface"/>
-			<fileset dir="${src.dir}/fossilEnums"/>
-			<fileset dir="${src.dir}/fossilAI"/>
-			<fileset dir="${src.dir}/entity"/>
-			<fileset dir="${src.dir}/blocks"/>
-			<fileset dir="${src.dir}/"/>
+			<fileset dir="${src.dir}"/>
 		</copy>
 		
 		<replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%VERSION%" value="${lp.version.full}"/>
