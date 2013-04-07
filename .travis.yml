@@ -6,5 +6,3 @@ jdk:
 before_script:
   - sudo apt-get install astyle
 script: ant test
-after_script:
-  - ls build/mcp/src/minecraft/
