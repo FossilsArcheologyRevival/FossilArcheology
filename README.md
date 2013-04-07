@@ -2,6 +2,7 @@ FossilArcheology  [![Build Status](https://travis-ci.org/k2b6s9j/FossilArcheolog
 ================
 
 ![1.4.7 0004 Banner](http://i.imgur.com/Ks2Vd0q.jpg)
+[Imgur album of current and past banners](http://imgur.com/a/hBe0h)
 
 As many of you know, Flammarilva was originally the author of this mod, but due to his circumstances could not continue development so he released the project as open source. Then Armbrust took the initiative to revive the mod, and brought together a small team to accomplish that. So huge thanks to Flammarilva for the awesome mod, and also to Armbrust for getting the ball rolling again.
 
@@ -15,3 +16,4 @@ Core Team
 Past/Hiatus Revival Members
 
   Chellre
+
