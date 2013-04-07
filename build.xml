@@ -222,10 +222,12 @@
 
 	<target name="vars">
 		<property name="fossil.version.full"      value="${fossil.version}.${BUILD_NUMBER}"/>
+		<property name="DEBUG"           value="false"/>
 	</target>
 
 	<target name="vars-dev">
 		<property name="fossil.version.full"      value="${fossil.version}.dev.${BUILD_NUMBER}"/>
+		<property name="DEBUG"           value="false"/>
 	</target>
 
 	<target name="vars-test">
