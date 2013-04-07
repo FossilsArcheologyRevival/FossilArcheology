@@ -167,15 +167,7 @@
 		</copy>
 
 		<!-- Copy resoucres -->
-		<copy todir="${classes.dir}/client">
-			<fileset dir="${src.dir}/Fossillang"></fileset>
-			<fileset dir="${src.dir}/armor"></fileset>
-			<fileset dir="${src.dir}/dinoSounds"></fileset>
-			<fileset dir="${src.dir}/textures"></fileset>
-			<fileset file="mcmod.info"></fileset>
-		</copy>
-		
-		<copy todir="${src.dir}/resources">
+		<copy todir="${mcp.dir}/reobf/minecraft/fossil">
 			<fileset dir="${src.dir}/Fossillang"></fileset>
 			<fileset dir="${src.dir}/armor"></fileset>
 			<fileset dir="${src.dir}/dinoSounds"></fileset>
