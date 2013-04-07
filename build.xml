@@ -168,7 +168,10 @@
 
 		<!-- Copy resoucres -->
 		<copy todir="${classes.dir}/client">
-			<fileset dir="${src.dir}/resources"></fileset>
+			<fileset dir="${src.dir}/Fossillang"></fileset>
+			<fileset dir="${src.dir}/armor"></fileset>
+			<fileset dir="${src.dir}/dinoSounds"></fileset>
+			<fileset dir="${src.dir}/textures"></fileset>
 		</copy>
 
 		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${lp.version.full}"/>
