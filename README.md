@@ -68,3 +68,13 @@ B:Heal_Dinos=true
 ```
 
 Set this to false, unfortunately this will disable dinosaurs healing, but when true dinosaurs will still disappear.
+
+## Fossils Public Server
+
+This server is run by 4f6f3b, and where he usually hangs out if anyone has any questions.
+
+**fossils.noip.us:25865**
+
+He has a zero tolerance policy on griefing, and will kick and ban with little warning. Yes it is a public server, but please play nice and let people enjoy the mod with other people.
+
+Also, please PM him on the Minecraft Forums with anything related to the server rather than post it on the thread.
