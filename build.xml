@@ -31,11 +31,11 @@
 	<property name="mc.version"           value="1.4.7"/>
 	<property name="forge.version"        value="6.6.2.534"/>
 	<property name="fossil.version"	      value="0004"/>
-	<property name="fossil.version.full"  value="${project.name} version ${fossil.version}"/>
+	<property name="fossil.version.full"  value="${mc.version} ${fossil.version}"/>
 
 	<!-- Targets -->
 	<target name="init-msg">
-		<echo message="Starting build for ${fossil.version.full} for Minecraft version ${mc.version}"/>
+		<echo message="Starting build for ${project.name} ${fossil.version.full}"/>
 	</target>
 
 	<target name="clean">
@@ -174,7 +174,7 @@
 			<fileset dir="${src.dir}/textures"></fileset>
 		</copy>
 
-		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${lp.version.full}"/>
+		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
 
 		<echo message="Compiling finished"/>
 
