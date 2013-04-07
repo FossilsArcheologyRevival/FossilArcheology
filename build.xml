@@ -174,20 +174,28 @@
 			<fileset dir="${src.dir}/textures"></fileset>
 			<fileset file="mcmod.info"></fileset>
 		</copy>
+		
+		<copy todir="${src.dir}/resources">
+			<fileset dir="${src.dir}/Fossillang"></fileset>
+			<fileset dir="${src.dir}/armor"></fileset>
+			<fileset dir="${src.dir}/dinoSounds"></fileset>
+			<fileset dir="${src.dir}/textures"></fileset>
+			<fileset file="mcmod.info"></fileset>
+		</copy>
 
 		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
 
 		<echo message="Compiling finished"/>
 
 		<!-- Create resources zip for MC in mcp -->
-		<zip destfile="${mcp.dir}/jars/mods/LogisticsPipes_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/>
+		<zip destfile="${mcp.dir}/jars/mods/${project.name}_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/>
 
 	</target>
 
 	<target name="package-simple" depends="compile">
-		<echo message="Packing version ${lp.version.full}"/>
+		<echo message="Packing version ${fossil.version.full}"/>
 
-		<jar destfile="${jar.dir}/LogisticsPipes-MC${mc.version}-${lp.version.full}.jar" basedir="${classes.dir}/client"/>
+		<jar destfile="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" basedir="${classes.dir}/client"/>
 
 		<echo message="Packing finished"/>
 	</target>
@@ -196,32 +204,32 @@
 		<echo message="Loading SignSettings"/>
 		<loadfile property="key" srcFile="${sign.dir}/.key"/>
 
-		<echo message="Packing version ${lp.version.full}"/>
+		<echo message="Packing version ${fossil.version.full}"/>
 
-		<jar destfile="${jar.dir}/LogisticsPipes-MC${mc.version}-${lp.version.full}.jar" basedir="${classes.dir}/client">
+		<jar destfile="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" basedir="${classes.dir}/client">
 			<manifest>
 				<attribute name="Built-By" value="RS485-Jenkins"/>
 				<attribute name="Implementation-Vendor" value="RS485"/>
-				<attribute name="Implementation-Title" value="LogisticsPipes"/>
-				<attribute name="Implementation-Version" value="${lp.version.full}"/>
+				<attribute name="Implementation-Title" value="${project.name}"/>
+				<attribute name="Implementation-Version" value="${fossil.version.full}"/>
 			</manifest>
 		</jar>
-		<signjar jar="${jar.dir}/LogisticsPipes-MC${mc.version}-${lp.version.full}.jar" alias="RS485" keystore="${sign.dir}/.keystore" storepass="${key}"/>
+		<signjar jar="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" alias="RS485" keystore="${sign.dir}/.keystore" storepass="${key}"/>
 
 		<echo message="Packing finished"/>
 
 	</target>
 
 	<target name="vars">
-		<property name="lp.version.full"      value="${lp.version}.${BUILD_NUMBER}"/>
+		<property name="fossil.version.full"      value="${fossil.version}.${BUILD_NUMBER}"/>
 	</target>
 
 	<target name="vars-dev">
-		<property name="lp.version.full"      value="${lp.version}.dev.${BUILD_NUMBER}"/>
+		<property name="fossil.version.full"      value="${fossil.version}.dev.${BUILD_NUMBER}"/>
 	</target>
 
 	<target name="vars-test">
-		<property name="lp.version.full" value="0.0.0.0"/>
+		<property name="fossil.version.full" value="0.0.0.0"/>
 		<property name="DEBUG"           value="true"/>
 	</target>
 
