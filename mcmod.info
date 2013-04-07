@@ -3,8 +3,8 @@
   "modid": "Fossil",
   "name": "Fossil/Archeology",
   "description": "Adds Dinos and Fossils to Minecraft",
-  "version": "1.47 0003",
-  "mcversion": "1.4.7",
+  "version": "%VERSION%",
+  "mcversion": "%MC%",
   "url": "",
   "updateUrl": "",
   "authors": [
