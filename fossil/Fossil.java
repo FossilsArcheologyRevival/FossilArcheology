@@ -184,7 +184,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = "Fossil", name = "Fossil/Archeology", version = "1.47 0004")
+@Mod(modid = "Fossil", name = "Fossil/Archeology", version = "%VERSION%")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class Fossil implements IPacketHandler
