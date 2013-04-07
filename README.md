@@ -9,12 +9,12 @@ As many of you know, Flammarilva was originally the author of this mod, but due 
 
 Core Team
 
-  Microjunk
-  Shadowbeast007
-  4f6f3b
-  tyranno66
+  [Microjunk](https://github.com/microjunk)
+  [Shadowbeast](https://github.com/Shadowbeast)
+  [4f6f3b](https://github.com/4f6f3b)
+  [tyranno66](https://github.com/tyranno66)
 
 Past/Hiatus Revival Members
 
-  Chellre
+  [Chellre](https://github.com/Chellre)
 
