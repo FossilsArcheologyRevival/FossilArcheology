@@ -1,5 +1,4 @@
-FossilArcheology  [![Build Status](https://travis-ci.org/k2b6s9j/FossilArcheology.png?branch=TravisCI)](https://travis-ci.org/k2b6s9j/FossilArcheology)
-================
+# FossilArcheology  [![Build Status](https://travis-ci.org/k2b6s9j/FossilArcheology.png?branch=TravisCI)](https://travis-ci.org/k2b6s9j/FossilArcheology)
 
 ![1.4.7 0004 Banner](http://i.imgur.com/Ks2Vd0q.jpg)
 
@@ -18,8 +17,7 @@ Past/Hiatus Revival Members
 
   [Chellre](https://github.com/Chellre)
 
-Localizations
-=============
+## Localizations
 
 We are in need of localizations for the language files.
 
@@ -27,8 +25,7 @@ https://docs.google.com/document/d/10VR4mI_EuEy0AHBI5pbqmronLN5paB0vjuhpZ99UL3A/
 
 Here's a google doc of the English language file. If you'd like to localize it please do so.  You can either submit it directly to the github, or any other way you'd want to send it to us would be fine.
 
-News
-====
+## News
 
 March 28, 2013
 
