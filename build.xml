@@ -32,6 +32,8 @@
 	<property name="forge.version"        value="6.6.0.497"/>
 	<property name="fossil.version"	      value="0004"/>
 	<property name="fossil.version.full"  value="${project.name} version ${fossil.version}"/>
+	
+	<property name="DEBUG"		      value="false"/>
 
 	<!-- Targets -->
 	<target name="init-msg">
@@ -218,7 +220,7 @@
 
 	<target name="vars-test">
 		<property name="lp.version.full" value="0.0.0.0"/>
-		<property name="DEBUG"           value="true"/>
+		<property name="DEBUG"           value="false"/>
 	</target>
 
 	<target name="main" depends="vars, init-msg, clean, setup, package-simple"/>
