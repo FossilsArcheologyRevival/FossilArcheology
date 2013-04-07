@@ -188,7 +188,7 @@
 		<echo message="Compiling finished"/>
 
 		<!-- Create resources zip for MC in mcp -->
-		<zip destfile="${mcp.dir}/jars/mods/${project.name}_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/>
+		<!-- <zip destfile="${mcp.dir}/jars/mods/${project.name}_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/> -->
 
 	</target>
 
