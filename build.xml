@@ -116,10 +116,10 @@
 		</taskdef>
 		<echo message="Loaderfacd ant-contrib"/>
 
-		<!-- Delete LP source in build space -->
+		<!-- Delete source in build space -->
 		<delete dir="${commonsrc.dir}/fossil"/>
 
-		<!-- Copy LP source -->
+		<!-- Copy source -->
 		<copy todir="${commonsrc.dir}/">
 			<fileset dir="${src.dir}"/>
 		</copy>
@@ -141,7 +141,7 @@
 
 	<target name="compile" depends="copySRC">
 
-		<echo message="Compiling version ${lp.version.full}"/>
+		<echo message="Compiling version ${fossil.version.full}"/>
 
 		<!-- Recompile -->
 		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
@@ -161,7 +161,7 @@
 			<arg value="reobfuscate.sh"/>
 		</exec>
 
-		<!-- Copy LP classes -->
+		<!-- Copy classes -->
 		<copy todir="${classes.dir}/client">
 			<fileset dir="${mcp.dir}/reobf/minecraft"/>
 		</copy>
