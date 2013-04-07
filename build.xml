@@ -124,9 +124,9 @@
 			<fileset dir="${src.dir}"/>
 		</copy>
 		
-		<replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%VERSION%" value="${lp.version.full}"/>
-		<replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%MCVERSION%" value="${mc.version}"/>
-		<replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%DEBUG%" value="${DEBUG}"/>
+		<replace file="${commonsrc.dir}/fossil/Fossil.java" token="%VERSION%" value="${fossil.version}"/>
+		<replace file="${commonsrc.dir}/fossil/Fossil.java" token="%MCVERSION%" value="${mc.version}"/>
+		<replace file="${commonsrc.dir}/fossil/Fossil.java" token="%DEBUG%" value="${DEBUG}"/>
 
 		<echo message="Loading FingerPrint"/>
 		<if>
