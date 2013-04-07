@@ -161,3 +161,14 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+#############
+## Build Script Remenants
+#############
+
+#Download Folder
+download/
+
+#Build Folder
+build/
+
