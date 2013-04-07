@@ -1,13 +1,17 @@
 FossilArcheology  [![Build Status](https://travis-ci.org/k2b6s9j/FossilArcheology.png?branch=TravisCI)](https://travis-ci.org/k2b6s9j/FossilArcheology)
 ================
 
-IN the Fossil.java:
-At the very beginning is a boolean DebugMode.
-Set to true for work in eclipse, false for compiles.
-The Fossillang and Dinosounds Folder must be in the jars/ressources folder for working in eclipse.
-place the whole fossil folder in mcp/src/minecraft.
-After recompiling/reobfuscating:(Debug MOde false!)
-Copy armor, fossillang,Textures and Dinosounds from the src folder in the reobf/minecraft/fossil folder.
-Copy the mcmod.info from src in the reobf/minecraft folder.
-Zip the fossil folder and the mcmod.info file up together and name the archive Fossil-Archeology.zip.
-That's it!
+![1.4.7 0004 Banner](http://i.imgur.com/Ks2Vd0q.jpg)
+
+As many of you know, Flammarilva was originally the author of this mod, but due to his circumstances could not continue development so he released the project as open source. Then Armbrust took the initiative to revive the mod, and brought together a small team to accomplish that. So huge thanks to Flammarilva for the awesome mod, and also to Armbrust for getting the ball rolling again.
+
+Core Team
+
+  Microjunk
+  Shadowbeast007
+  4f6f3b
+  tyranno66
+
+Past/Hiatus Revival Members
+
+  Chellre
