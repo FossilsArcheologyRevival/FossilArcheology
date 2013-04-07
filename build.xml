@@ -172,6 +172,7 @@
 			<fileset dir="${src.dir}/armor"></fileset>
 			<fileset dir="${src.dir}/dinoSounds"></fileset>
 			<fileset dir="${src.dir}/textures"></fileset>
+			<fileset dir="mcmod.info"></fileset>
 		</copy>
 
 		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
