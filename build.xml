@@ -171,22 +171,13 @@
 			<fileset file="mcmod.info"/>
 		</copy>
 		
-		<copy todir="${classes.dir}/cient/fossil/Fossillang">
+		<copy todir="${classes.dir}/client/fossil/">
 			<fileset dir="${src.dir}/Fossillang"/>
-		</copy>
-		
-		<copy todir="${classes.dir}/cient/fossil/armor">
 			<fileset dir="${src.dir}/armor"/>
-		</copy>
-		
-		<copy todir="${classes.dir}/cient/fossil/dinosounds">
 			<fileset dir="${src.dir}/dinoSounds"/>
-		</copy>
-		
-		<copy todir="${classes.dir}/cient/fossil/textures">
 			<fileset dir="${src.dir}/textures"/>
 		</copy>
-
+		
 		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
 		<replace file="${classes.dir}/client/mcmod.info" token="%MC%" value="${mc.version}"/>
 
