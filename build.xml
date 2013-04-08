@@ -170,7 +170,7 @@
 		<replace file="mcmod.info" token="%MC%" value="${mc.version}"/>
 
 		<!-- Copy resoucres -->
-		<copy todir="${mcp.dir}/reobf/minecraft/fossil">
+		<copy todir="${classes.dir}/client">
 			<fileset dir="${src.dir}/Fossillang"></fileset>
 			<fileset dir="${src.dir}/armor"></fileset>
 			<fileset dir="${src.dir}/dinoSounds"></fileset>
