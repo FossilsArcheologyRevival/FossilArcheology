@@ -31,7 +31,7 @@
 	<property name="mc.version"           value="1.4.7"/>
 	<property name="forge.version"        value="6.6.2.534"/>
 	<property name="fossil.version"	      value="0004"/>
-	<property name="fossil.version.full"  value="${mc.version} ${fossil.version}"/>
+	<property name="fossil.version.full"  value="${mc.version}-${fossil.version}"/>
 
 	<!-- Targets -->
 	<target name="init-msg">
@@ -188,7 +188,7 @@
 	<target name="package-simple" depends="compile">
 		<echo message="Packing version ${fossil.version.full}"/>
 
-		<jar destfile="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" basedir="${classes.dir}/client"/>
+		<jar destfile="${jar.dir}/${project.name}_MC${mc.version}_${fossil.version.full}.jar" basedir="${classes.dir}/client"/>
 
 		<echo message="Packing finished"/>
 	</target>
