@@ -167,6 +167,7 @@
 		</copy>
 
 		<replace file="mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
+		<replace file="mcmod.info" token="%MC%" value="${mc.version}"/>
 
 		<!-- Copy resoucres -->
 		<copy todir="${mcp.dir}/reobf/minecraft/fossil">
