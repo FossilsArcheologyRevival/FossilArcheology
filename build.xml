@@ -166,6 +166,8 @@
 			<fileset dir="${mcp.dir}/reobf/minecraft"/>
 		</copy>
 
+		<replace file="mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
+
 		<!-- Copy resoucres -->
 		<copy todir="${mcp.dir}/reobf/minecraft/fossil">
 			<fileset dir="${src.dir}/Fossillang"></fileset>
@@ -174,8 +176,6 @@
 			<fileset dir="${src.dir}/textures"></fileset>
 			<fileset file="mcmod.info"></fileset>
 		</copy>
-
-		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
 
 		<echo message="Compiling finished"/>
 
