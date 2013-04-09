@@ -184,7 +184,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(modid = "Fossil", name = "Fossil/Archeology", version = "1.47 0004")
+@Mod(modid = "Fossil", name = "Fossil/Archeology", version = "%VERSION%")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class Fossil implements IPacketHandler
@@ -210,7 +210,7 @@ public class Fossil implements IPacketHandler
 	 * If DebugMode = true
 	 * HatchTime is set to 1
 	 */
-	public static boolean DebugMode = false;
+	public static boolean DebugMode = %DEBUG%;
 	public static final double MESSAGE_DISTANCE = 25.0D;
 	
     //private static int[] blockIDs = new int[] {1137, 1138, 1139, 1140, 1141, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1149, 1151, 1152, 1153};

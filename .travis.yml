@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk7
+  - openjdk
+  - openjdk6
+before_script:
+  - sudo apt-get install astyle
+script: ant test

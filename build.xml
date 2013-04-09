@@ -1,0 +1,251 @@
+<project name="FossilArcheology" basedir="." default="main">
+  <property environment="env"/>
+
+	<!-- Properties -->
+	
+	<property name="project.name"         value="FossilArcheology"/>
+	
+	<property name="build.dir"            value="build"/>
+	<property name="src.dir"              value="fossil"/>
+	<property name="sign.dir"             value="/home/jenkins/.sign"/>
+
+	<property name="download.dir"         value="download"/>
+	<property name="files.minecraft.dir"  value="jars"/>
+
+	<property name="classes.dir"          value="${build.dir}/classes"/>
+	<property name="jar.dir"              value="${build.dir}/dist"/>
+	<property name="lib.dir"              value="${build.dir}/lib"/>
+
+	<property name="mcp.dir"              value="${build.dir}/mcp"/>
+	<property name="forge.dir"            value="${mcp.dir}/forge"/>
+	
+	<property name="clientsrc.dir"        value="${mcp.dir}/src/minecraft"/>
+	<property name="commonsrc.dir"        value="${clientsrc.dir}/fossil"/>
+
+	<property name="downloadserver"       value="http://www.theZorro266.com"/>
+	<property name="downloadserver.dir"   value="rs485/"/>
+	<property name="downloadserver.full"  value="${downloadserver}/${downloadserver.dir}"/>
+
+	<property name="antcont.version"      value="1.0b2"/>
+	<property name="mcp.version"          value="726"/>
+	<property name="mc.version"           value="1.4.7"/>
+	<property name="forge.version"        value="6.6.2.534"/>
+	<property name="fossil.version"	      value="0004"/>
+	<property name="fossil.version.full"  value="${mc.version}-${fossil.version}"/>
+
+	<!-- Targets -->
+	<target name="init-msg">
+		<echo message="Starting build for ${project.name} ${fossil.version.full}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<target name="setup">
+		<mkdir dir="${download.dir}"/>
+		
+		<get src="${downloadserver.full}mcp${mcp.version}.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="http://files.minecraftforge.net/minecraftforge/minecraftforge-src-${mc.version}-${forge.version}.zip" dest="${download.dir}" usetimestamp="True"/>
+		<get src="${downloadserver.full}ant-contrib-${antcont.version}-bin.zip" dest="${download.dir}" usetimestamp="True"/>
+
+		<echo message="Download finished"/>
+
+
+		<unzip dest="${lib.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="ant-contrib-${antcont.version}-bin.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${mcp.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="mcp${mcp.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<unzip dest="${mcp.dir}" failOnEmptyArchive="true">
+			<fileset dir="${download.dir}">
+				<include name="minecraftforge-src-${mc.version}-${forge.version}.zip"/>
+			</fileset>
+		</unzip>
+
+		<echo message="Unpacking finished"/>
+
+		<chmod file="${mcp.dir}/updatemd5.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/updatemcp.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/recompile.sh" perm="+x"/>
+		<chmod file="${mcp.dir}/reobfuscate.sh" perm="+x"/>
+		<chmod file="${forge.dir}/install.sh" perm="+x"/>
+
+		<!-- if your building on OSX these 2 should be executable -->
+		<chmod file="${mcp.dir}/runtime/bin/astyle-osx" perm="+x"/>
+		<chmod file="${mcp.dir}/runtime/bin/jad-osx" perm="+x"/>
+
+		<!-- Install forge -->
+		<exec dir="${forge.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg line="/c install.cmd"/>
+		</exec>
+
+		<exec dir="${forge.dir}" executable="sh" osfamily="unix" failonerror="true">
+			<arg value="install.sh"/>
+		</exec>
+
+		<echo message="Decompile finished"/>
+
+		<!-- Refresh MD5 -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg line="/c updatemd5.bat -f --client"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+			<arg line="updatemd5.sh -f --client"/>
+		</exec>
+
+		<echo message="Regenerated MD5s"/>
+
+	</target>
+
+
+	<target name="copySRC" >
+		<!-- Pull in ant-contrib for if task -->
+		<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+			<classpath>
+				<pathelement location="${lib.dir}/ant-contrib/lib/ant-contrib.jar"/>
+			</classpath>
+		</taskdef>
+		<echo message="Loaderfacd ant-contrib"/>
+
+		<!-- Delete source in build space -->
+		<delete dir="${commonsrc.dir}/fossil"/>
+
+		<!-- Copy source -->
+		<copy todir="${commonsrc.dir}/">
+			<fileset dir="${src.dir}"/>
+		</copy>
+		
+		<replace file="${commonsrc.dir}/Fossil.java" token="%VERSION%" value="${fossil.version}"/>
+		<replace file="${commonsrc.dir}/Fossil.java" token="%MCVERSION%" value="${mc.version}"/>
+		<replace file="${commonsrc.dir}/Fossil.java" token="%DEBUG%" value="${DEBUG}"/>
+
+		<echo message="Loading FingerPrint"/>
+		<if>
+			<available file="${sign.dir}/.fingerprint"/>
+			<then>
+				<loadfile property="fingerprint" srcFile="${sign.dir}/.fingerprint"/>
+				<replace file="${commonsrc.dir}/logisticspipes/LogisticsPipes.java" token="%------------CERTIFICATE-SUM-----------%" value="${fingerprint}"/>
+			</then>
+		</if>
+	</target>
+
+
+	<target name="compile" depends="copySRC">
+
+		<echo message="Compiling version ${fossil.version.full}"/>
+
+		<!-- Recompile -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg line="/c recompile.bat --client"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+			<arg value="recompile.sh"/>
+		</exec>
+
+		<!-- Reobf -->
+		<exec dir="${mcp.dir}" executable="cmd" osfamily="windows" failonerror="true">
+			<arg line="/c reobfuscate.bat --client"/>
+		</exec>
+
+		<exec dir="${mcp.dir}" executable="sh" osfamily="unix" failonerror="true">
+			<arg value="reobfuscate.sh"/>
+		</exec>
+
+		<!-- Copy classes -->
+		<copy todir="${classes.dir}/client">
+			<fileset dir="${mcp.dir}/reobf/minecraft"/>
+		</copy>
+
+		<!-- Copy resoucres -->
+		<copy todir="${classes.dir}/client">
+			<fileset file="mcmod.info"/>
+		</copy>
+		
+		<copy todir="${classes.dir}/client/fossil/Fossillang">
+			<fileset dir="${src.dir}/Fossillang"/>
+		</copy>
+
+		<copy todir="${classes.dir}/client/fossil/armor">
+			<fileset dir="${src.dir}/armor"/>
+		</copy>
+
+		<copy todir="${classes.dir}/client/fossil/dinosounds">
+			<fileset dir="${src.dir}/dinoSounds"/>
+		</copy>
+
+		<copy todir="${classes.dir}/client/fossil/textures">
+			<fileset dir="${src.dir}/textures"/>
+		</copy>
+		
+		<replace file="${classes.dir}/client/mcmod.info" token="%VERSION%" value="${fossil.version.full}"/>
+		<replace file="${classes.dir}/client/mcmod.info" token="%MC%" value="${mc.version}"/>
+
+		<echo message="Compiling finished"/>
+
+		<!-- Create resources zip for MC in mcp -->
+		<!-- <zip destfile="${mcp.dir}/jars/mods/${project.name}_resources.zip" basedir="${src.dir}/resources" excludes="mcmod.info"/> -->
+
+	</target>
+
+	<target name="package-simple" depends="compile">
+		<echo message="Packing version ${fossil.version.full}"/>
+
+		<jar destfile="${jar.dir}/${project.name}_MC${mc.version}_${fossil.version.full}.jar" basedir="${classes.dir}/client"/>
+
+		<echo message="Packing finished"/>
+	</target>
+
+	<target name="package-sign" depends="compile">
+		<echo message="Loading SignSettings"/>
+		<loadfile property="key" srcFile="${sign.dir}/.key"/>
+
+		<echo message="Packing version ${fossil.version.full}"/>
+
+		<jar destfile="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" basedir="${classes.dir}/client">
+			<manifest>
+				<attribute name="Built-By" value="RS485-Jenkins"/>
+				<attribute name="Implementation-Vendor" value="RS485"/>
+				<attribute name="Implementation-Title" value="${project.name}"/>
+				<attribute name="Implementation-Version" value="${fossil.version.full}"/>
+			</manifest>
+		</jar>
+		<signjar jar="${jar.dir}/${project.name}-MC${mc.version}-${fossil.version.full}.jar" alias="RS485" keystore="${sign.dir}/.keystore" storepass="${key}"/>
+
+		<echo message="Packing finished"/>
+
+	</target>
+
+	<target name="vars">
+		<property name="fossil.version.full"      value="${fossil.version}.${BUILD_NUMBER}"/>
+		<property name="DEBUG"           value="false"/>
+	</target>
+
+	<target name="vars-dev">
+		<property name="fossil.version.full"      value="${fossil.version}.dev.${BUILD_NUMBER}"/>
+		<property name="DEBUG"           value="false"/>
+	</target>
+
+	<target name="vars-test">
+		<property name="fossil.version.full" value="0.0.0.0"/>
+		<property name="DEBUG"           value="true"/>
+	</target>
+
+	<target name="main" depends="vars, init-msg, clean, setup, package-simple"/>
+
+	<target name="ci-dev" depends="vars-dev, init-msg, clean, setup, package-sign"/>
+
+	<target name="ci" depends="vars, init-msg, clean, setup, package-sign"/>
+
+	<target name="test" depends="vars-test, init-msg, clean, setup, compile"/>
+
+</project>
