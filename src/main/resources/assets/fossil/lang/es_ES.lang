@@ -16,14 +16,14 @@ achievement.FirstEgg=¡Tu primer dinosaurio!
 achievement.AllEggs=Todos los huevos de dinosaurio
 achievement.FoundFossils=Cavando en busca de huesos
 achievement.pigBossOnEarth=¡Rompiste la Regla!
-achievement.Permafrost=Try not to get a cold!
-achievement.ArchWorkbench=Let's get the party started!
-achievement.Analyzer=For SCIENCE!
-achievement.CultVat=Genetic manipulation.
-achievement.Sifter=Cuz' baby I'm a Gold Digger!
-achievement.Dinopedia=Fill all the pages!
-achievement.IceAge=I do not know how you'll give birth...
-achievement.TheKing=Ruler of the Late Cretaceous.
+achievement.Permafrost=¡Intenta no pillar un resfriado!
+achievement.ArchWorkbench=¡Que empiece la fiesta!
+achievement.Analyzer=¡Para la CIENCIA!
+achievement.CultVat=Manipulación genética
+achievement.Sifter=Por eso bebé, ¡Soy un buscador de oro!
+achievement.Dinopedia=¡Rellené todas las páginas!
+achievement.IceAge=No sé cómo vas a dar a luz...
+achievement.TheKing=Gobernante del Cretácico Superior
 
 #Achievement Descriptions
 achievement.FirstEgg.desc=¡Trajiste de vuelta a tu primer dinosaurio!
@@ -40,8 +40,8 @@ achievement.IceAge=However I want the ice age back!
 achievement.TheKing=Long live the king!
 
 #Enchantments
-enchantment.paleontology=Paleontology
-enchantment.archeology=Archeology
+enchantment.paleontology=Paleontología
+enchantment.archeology=Arqueología
 
 #Blocks
 tile.fossil.name=Fósil
