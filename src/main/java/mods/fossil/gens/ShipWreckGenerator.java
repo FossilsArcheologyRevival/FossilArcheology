@@ -37,6 +37,10 @@ public class ShipWreckGenerator implements IWorldGenerator
         }
     }
 
+EntityBones entitybones = new EntityBones(world);
+entitybones.setLocationAndAngles((double)i, j, (double)k, 0.0F, 0.0F);
+world.spawnEntityInWorld(entitybones);
+
     private final void generateStructure(World world, Random rand, int chunkX, int chunkZ)
     {
         // Need to create a new instance each time or the generate() methods may overlap themselves and cause a crash
