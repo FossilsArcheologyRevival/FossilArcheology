@@ -158,7 +158,7 @@ public class EntityPigBoss extends EntityMob implements IBossDisplayData, IRange
         this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
         
-        	this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.65D);
+        	this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
 
     }
     
